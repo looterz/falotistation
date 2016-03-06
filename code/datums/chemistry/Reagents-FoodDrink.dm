@@ -1,4 +1,4 @@
-﻿//Contains reagents related to eating or drinking.
+//Contains reagents related to eating or drinking.
 datum
 	reagent
 		fooddrink/
@@ -1827,7 +1827,6 @@ datum
 					if (!locate(/obj/decal/cleanable/ketchup) in T)
 						playsound(T, "sound/effects/splat.ogg", 50, 1)
 						new /obj/decal/cleanable/ketchup(T)
-
 
 		fooddrink/mustard
 			name = "mustard"
