@@ -2,7 +2,7 @@
 	set name = "Authorize"
 
 	if (admins.Find(src.ckey))
-		boutput(src, "<span class='ooc adminooc'>Admin IRC - #ss13centcom #ss13admin on irc.synirc.net</span>")
+		//boutput(src, "<span class='ooc adminooc'>Admin IRC - #ss13centcom #ss13admin on irc.synirc.net</span>")
 		if (!NT.Find(src.ckey))
 			NT.Add(src.ckey)
 			//src.mentor = 1
