@@ -481,9 +481,7 @@
 				var/mob/tmob = AM
 				if(istype(tmob, /mob/living/carbon/human) && tmob.bioHolder && tmob.bioHolder.HasEffect("fat"))
 					if(prob(20))
-						for(var/mob/M in viewers(src, null))
-							if(M.client)
-								boutput(M, "<span style=\"color:red\"><B>[src] fails to push [tmob]'s fat ass out of the way.</B></span>")
+						visible_message("<span style=\"color:red\"><B>[src] fails to push [tmob]'s fat ass out of the way.</B></span>")
 						src.now_pushing = 0
 						src.unlock_medal("That's no moon, that's a GOURMAND!", 1)
 						return
