@@ -1,7 +1,15 @@
-data/
-goonstation.dmb
-goonstation.dyn.rsc
-goonstation.rsc
+#Ignore everything in datafolder and subdirectories
+/data/**/*
+
+#Ignore compiled files and other files generated during compilation.
+*.dmb
+*.rsc
+*.lk
+*.int
+*.backup
+*.txt
+*.int
+*.db
+*.log
 *.o
 *.so
-server.log
