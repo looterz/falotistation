@@ -344,7 +344,7 @@ var/f_color_selector_handler/F_Color_Selector
 	spawn(30)
 		Optimize()
 		sleep_offline = 1
-		//lag_loop()
+		lag_loop()
 
 		/*if (map_setting) // to make sure all the sprites get updated as they should and connect properly
 			if (map_setting == "COG2")

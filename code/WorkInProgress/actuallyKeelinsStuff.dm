@@ -1908,7 +1908,8 @@
 //1.5 would be 50% slower, 2.0 would be 100% slower etc.
 var/const/lag_average_size = 20			 //Number of samples the average is based on.
 
-var/lag_string = "Yes"//"none"
+//var/lag_string = "Yes"//"none"
+var/lag_string = "No"
 
 var/average_tenth = 1
 var/list/lag_list = new/list()
