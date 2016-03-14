@@ -2641,8 +2641,12 @@
 	//if (istype(item, /obj/item))
 		//item:dropped(src) // let it know it's been dropped
 
+	if (get_dist(src, target) > 0)
+		src.dir = get_dir(src, target)
+
 	//actually throw it!
 	if (item)
+		attack_twitch(src)
 		item.layer = initial(item.layer)
 		src.visible_message("<span style=\"color:red\">[src] throws [item].</span>")
 		if (iscarbon(item))
@@ -2919,6 +2923,7 @@
 				boutput(M, "<span style=\"color:red\">You cannot harm your master!</span>")
 				return
 
+			attack_twitch(M)
 			M.violate_hippocratic_oath()
 			message_admin_on_attack(M, "punches")
 			if (src.shrunk == 2)
