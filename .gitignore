@@ -1,0 +1,7 @@
+data/
+goonstation.dmb
+goonstation.dyn.rsc
+goonstation.rsc
+*.o
+*.so
+server.log
