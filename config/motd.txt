@@ -1,4 +1,5 @@
-<h1>A Fear and Loathing on The Internet Goon Station 13 server!</h1>
+<h1>A Fear and Loathing on The Internet Space Station 13 server!</h1>
+<br><i>Based on <a href="https://github.com/looterz/falotistation">goonstation-2016</a></i><br>
 Need to talk over radio? '<b>say ;your message</b>'<br>
 Got a question about game mechanics? Use <b>mentorhelp</b> or consult the <a href="http://wiki.ss13.co/">wiki</a>.<br>
 Got a problem? Use <b>adminhelp</b> if you want to complain about it, not deadchat or OOC.</b><br>
