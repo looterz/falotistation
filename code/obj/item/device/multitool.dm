@@ -17,7 +17,7 @@
 	/obj/item/device/multitool/suicide(var/mob/user as mob)
 	user.visible_message("<span style=\"color:red\"><b>[user] connects the wires from the multitool onto [him_or_her(user)]self's tongue and presses pulse. It's pretty shocking to look at.</b></span>")
 	user.TakeDamage("head", 0,160)
-	user.updatehealth()
+	//user.updatehealth()
 	spawn(100)
 		if (user)
 			user.suiciding = 0
