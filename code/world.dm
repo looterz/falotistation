@@ -431,7 +431,7 @@ var/f_color_selector_handler/F_Color_Selector
 	var/s = ""
 
 	if (config && config.server_name)
-		s += "<b>[config.server_name]</b> &#8212; "
+		s += "<big><b>[config.server_name]</b> &#8212; </big>"
 
 	if(ticker && ticker.mode)
 		s += "<big><b>[istype(ticker.mode, /datum/game_mode/construction) ? "Construction Mode" : station_name()]</b></big>";
