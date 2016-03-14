@@ -405,7 +405,7 @@ var/global
 
 //	datum/air_tunnel/air_tunnel1/SS13_airtunnel = null
 	going = 1.0
-	master_mode = "traitor"
+	master_mode = "secret"
 
 	datum/engine_eject/engine_eject_control = null
 	host = null
