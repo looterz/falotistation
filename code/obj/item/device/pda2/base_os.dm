@@ -569,7 +569,7 @@
 
 					if(ismob(master.loc)) //Alert the person holding us.
 						var/mob/M = master.loc
-						boutput(M, "<i><b>[bicon(master)] <a href='byond://?src=\ref[src];input=message;norefresh=1;target=[signal.data["sender"]]'>[sender]</a>:</b></i> [signal.data["message"]]")
+						M.show_message("<i><b>[bicon(master)] <a href='byond://?src=\ref[src];input=message;norefresh=1;target=[signal.data["sender"]]'>[sender]</a>:</b></i> [signal.data["message"]]")
 
 					src.master.updateSelfDialog()
 
