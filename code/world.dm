@@ -446,7 +446,7 @@ var/f_color_selector_handler/F_Color_Selector
 	//s += svn_revision
 	//s += " &#8212; "
 	//s += "blame " + svn_author
-	//s += ")"
+	s += ")"
 
 	var/list/features = list()
 
