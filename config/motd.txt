@@ -1,9 +1,7 @@
 <h1>A Fear and Loathing on The Internet Goon Station 13 server!</h1>
-<i>Managed by Pantaloons.</i><br>
 Need to talk over radio? '<b>say ;your message</b>'<br>
 Got a question about game mechanics? Use <b>mentorhelp</b> or consult the <a href="http://wiki.ss13.co/">wiki</a>.<br>
 Got a problem? Use <b>adminhelp</b> if you want to complain about it, not deadchat or OOC.</b><br>
-Got a suggestion? Post it on the Goonstation <a href="http://forum.ss13.co/index.php">discussion forum</a>.<br>
 <br>
 <b>By playing here you accept that you may occasionally / frequently be toolboxed / bombed / burned at any time for someone's amusement.</b>
 <br>
