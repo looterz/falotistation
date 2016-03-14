@@ -107,5 +107,7 @@
 	construction
 		explanation_text = "Perform obnoxious construction and renovation projects. Insist that you're just doing your job."
 
+	it_was_me_all_along
+		explanation_text = "Insist that you are an antagonist, while claiming responsibility for every bad thing that happens to the station."
 
 #endif
