@@ -194,9 +194,14 @@ datum/shuttle_controller
 
 						for (var/obj/machinery/door/D in start_location)
 							D.close()
-							if (istype(D, /obj/machinery/door/airlock/external))
-								D.locked = 1
-								D.update_icon()
+							if (map_setting == "COG2")
+								if (istype(D, /obj/machinery/door/airlock/pyro/external))
+									D.locked = 1
+									D.update_icon()							
+							else
+								if (istype(D, /obj/machinery/door/airlock/external))
+									D.locked = 1
+									D.update_icon()
 
 						for (var/mob/M in start_location)
 							shake_camera(M, 32, 4)
