@@ -7,5 +7,5 @@
 // Exadv1 hub
 world
 	hub = "Exadv1.SpaceStation13"
-	hub_password = "kMZy3U5jJHSiBQjr"
-	name = "Goon Station 13"
+	hub_password = "kMZy3U5jJHSiBQjr" // @todo: update with golang service
+	name = "FALOTI Station"

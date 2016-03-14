@@ -400,7 +400,8 @@ var/global
 	diary = null
 	hublog = null
 	station_name = null
-	game_version = "Goon Station 13 (r" + svn_revision + ")"
+	//game_version = "Goon Station 13 (r" + svn_revision + ")"
+	game_version = "FALOTI Station" // @todo: update with golang service
 
 //	datum/air_tunnel/air_tunnel1/SS13_airtunnel = null
 	going = 1.0
