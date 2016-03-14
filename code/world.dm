@@ -443,7 +443,7 @@ var/f_color_selector_handler/F_Color_Selector
 	s += "FALOTI Station"
 	s += "</a>"
 	//s += " r"
-	//s += svn_revision
+	//s += svn_revision // @todo: update with golang service
 	//s += " &#8212; "
 	//s += "blame " + svn_author
 	s += ")"
