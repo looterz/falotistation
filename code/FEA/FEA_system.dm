@@ -180,6 +180,7 @@ datum
 				boutput(world, "<span style=\"color:red\">Geometry processed in [(world.timeofday-start_time)/10] seconds!</span>")
 
 			assemble_group_turf(turf/simulated/base)
+				set waitfor = 0
 				var/list/turf/simulated/members = list(base) //Confirmed group members
 				var/list/turf/simulated/possible_members = list(base) //Possible places for group expansion
 				var/list/turf/simulated/possible_borders

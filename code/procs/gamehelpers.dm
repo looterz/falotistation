@@ -447,6 +447,7 @@ var/obj/item/dummy/click_dummy = new
 
 
 /area/proc/move_contents_to(var/area/A, var/turftoleave=null)
+	set waitfor = 0
 	//Takes: Area. Optional: turf type to leave behind.
 	//Returns: Nothing.
 	//Notes: Attempts to move the contents of one area to another area.
