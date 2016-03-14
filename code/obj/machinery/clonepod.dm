@@ -641,6 +641,16 @@ var/list/clonepod_accepted_reagents = list("blood"=0.5,"synthflesh"=1,"beff"=0.7
 				boutput(user, "<span style=\"color:red\">There is already enough meat in there! You should not exceed the maximum safe meat level!</span>")
 				return
 
+			if(G.contents && G.contents.len > 0)
+				for (var/obj/item/W in G.contents)
+					if (istype(W, /obj/item/skull) || istype(W, /obj/item/organ/brain) || istype(W, /obj/item/organ/eye))
+						continue
+
+					if (W)
+						W.set_loc(user.loc)
+						W.dropped(user)
+						W.layer = initial(W.layer)
+
 			src.meats += G
 			user.u_equip(G)
 			G.set_loc(src)
