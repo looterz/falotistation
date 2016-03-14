@@ -439,14 +439,14 @@ var/f_color_selector_handler/F_Color_Selector
 		s += "<big><b>[station_name()]</b></big>";
 
 	s += " ("
-	s += "<a href=\"http://ss13.co/\">"
-	s += "Goon Station 13"
+	s += "<a href=\"https://github.com/looterz/falotistation/\">"
+	s += "FALOTI Station"
 	s += "</a>"
-	s += " r"
-	s += svn_revision
-//	s += " &#8212; "
-//	s += "blame " + svn_author
-	s += ")"
+	//s += " r"
+	//s += svn_revision
+	//s += " &#8212; "
+	//s += "blame " + svn_author
+	//s += ")"
 
 	var/list/features = list()
 
