@@ -22,7 +22,7 @@ module.exports = function (grunt) {
     dist: 'build'
   };
 
-  var cdn = 'http://cdn.goonhub.com';
+  var cdn = 'http://cdn.mine-dog.ninja';
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -93,7 +93,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= config.app %>/images',
-          src: '**/*.{gif,jpeg,jpg,png}',
+          src: '[**/*.{gif,jpeg,jpg,png}]',
           dest: '<%= config.dist %>/images'
         }]
       }
@@ -104,7 +104,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= config.app %>/images',
-          src: '**/*.svg',
+          src: '[**/*.svg]',
           dest: '<%= config.dist %>/images'
         }]
       }

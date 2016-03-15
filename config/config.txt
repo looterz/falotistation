@@ -79,4 +79,4 @@ SERVERREGION US
 
 ENV prod
 
-CDN http://cdn.goonhub.com
+CDN http://cdn.mine-dog.ninja
