@@ -410,7 +410,7 @@
 	var/datum/spyGUI/gui = null
 	New()
 		..()
-		gui = new("html/pathoComp.html", "pathology", "size=900x800", src)
+		gui = new("html/PathoComp.html", "pathology", "size=900x800", src)
 		gui.validate_user = 1
 		spawn(50)
 			rescan()
@@ -436,10 +436,6 @@
 		if(src.manip.machine_state == PATHOGEN_MANIPULATOR_STATE_SPLICING_SESSION)
 			sendSpliceInfo(1)
 		sendAnalysisData()
-		/*
-		user << browse(grabResource("html/PathoComp.html"), "window=pathology;size=900x800")
-		sendData(user, initUI(), "setUIState")
-		*/
 
 	proc/initUI()
 		var/out = {"{"src":"\ref[src]","actPage":[src.manip.machine_state],"exposed":[src.manip.exposed],"loadedDna":[pathogen2json(src.manip.loaded)],"dnaDetails":[slots2json()],"splice":{"selected":[src.manip.splicesource]}}"}
