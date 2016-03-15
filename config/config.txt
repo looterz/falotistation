@@ -79,4 +79,4 @@ SERVERNAME FALOTI Station
 
 ENV prod
 
-CDN http://cdn.mine-dog.ninja
+CDN http://cdn.goonhub.com

@@ -22,7 +22,7 @@ module.exports = function (grunt) {
     dist: 'build'
   };
 
-  var cdn = 'http://cdn.mine-dog.ninja';
+  var cdn = 'http://cdn.goonhub.com';
 
   // Define the configuration for all the tasks
   grunt.initConfig({
