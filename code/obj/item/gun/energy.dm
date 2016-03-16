@@ -722,3 +722,82 @@
 
 	update_icon() // Necessary. Parent's got a different sprite now (Convair880).
 		return
+
+
+/////////////////////////////////////// Pickpocket Grapple, Grayshift's grif gun
+/obj/item/gun/energy/pickpocket
+	name = "pickpocket grapple gun" // absurdly shitty name
+	desc = "A complicated, camoflaged claw device on a tether capable of complex and stealthy interactions. It steals shit."
+	icon_state = "teleport"
+	w_class = 2.0
+	inhand_image_icon = 'icons/mob/inhand/hand_tools.dmi'
+	item_state = "wrench" // because it's for engineers
+	force = 4.0
+	throw_speed = 3
+	throw_range = 10
+	rechargeable = 0 // Cannot be recharged manually.
+	cell = new/obj/item/ammo/power_cell/self_charging/slowcharge
+	current_projectile = new/datum/projectile/pickpocket/steal
+	projectiles = null
+	is_syndicate = 1
+	silenced = 1
+	custom_cell_max_capacity = 100
+	module_research = list("medicine" = 2, "science" = 2, "weapons" = 2, "energy" = 2, "miniaturization" = 10)
+	var/obj/item/heldItem = null
+
+	New()
+		current_projectile = new/datum/projectile/pickpocket/steal
+		projectiles = list(current_projectile, new/datum/projectile/pickpocket/plant, new/datum/projectile/pickpocket/harass)
+		..()
+
+	attack_hand(mob/user as mob)
+		if (src.loc == user && (src == user.l_hand || src == user.r_hand))
+			if (heldItem)
+				boutput(user, "You remove the [heldItem.name] from the gun.")
+				user.put_in_hand_or_drop(heldItem)
+				heldItem = null
+			else
+				boutput(user, "The gun does not contain anything.")
+		else
+			return ..()
+
+	attackby(obj/item/I as obj, mob/user as mob)
+		if (I.cant_drop) return
+		if (heldItem)
+			boutput(user, "The gun is already holding [heldItem.name].")
+		else
+			heldItem = I
+			user.u_equip(I)
+			I.dropped(user)
+			boutput(user, "You insert the [heldItem.name] into the gun's gripper.")
+		return ..()
+
+	attack(mob/M as mob, mob/user as mob)
+		if (istype(current_projectile, /datum/projectile/pickpocket/steal) && heldItem)
+			boutput(user, "Cannot steal while gun is holding something!")
+			return
+		if (istype(current_projectile, /datum/projectile/pickpocket/plant) && !heldItem)
+			boutput(user, "Cannot plant item if gun is not holding anything!")
+			return
+		
+		var/datum/projectile/pickpocket/shot = current_projectile
+		shot.linkedGun = src
+		shot.targetZone = user.zone_sel.selecting
+		shot.heldItem = heldItem
+		if (istype(current_projectile, /datum/projectile/pickpocket/plant)) heldItem = null
+		return ..(M, user)
+
+	shoot(var/target, var/start, var/mob/user)
+		if (istype(current_projectile, /datum/projectile/pickpocket/steal) && heldItem)
+			boutput(user, "Cannot steal items while gun is holding something!")
+			return
+		if (istype(current_projectile, /datum/projectile/pickpocket/plant) && !heldItem)
+			boutput(user, "Cannot plant item if gun is not holding anything!")
+			return
+		
+		var/datum/projectile/pickpocket/shot = current_projectile
+		shot.linkedGun = src
+		shot.targetZone = user.zone_sel.selecting
+		shot.heldItem = heldItem
+		if (istype(current_projectile, /datum/projectile/pickpocket/plant)) heldItem = null
+		return ..(target, start, user)
