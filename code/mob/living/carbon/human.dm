@@ -2087,9 +2087,9 @@
 	if (usr.stat == 0)
 		. += "<br><span style=\"color:blue\">You look closely at <B>[src.name]</B>.</span>"
 		if(!issilicon(usr)) // Sleeping for multiple seconds because you are observing someone as the AI feels weird man.
-			sleep(get_dist(usr, src) + 1)
+			sleep(get_dist(usr.client.eye, src) + 1)
 	if (!istype(usr, /mob/dead/target_observer))
-		if (get_dist(usr, src) > 7 && (!usr.client || !usr.client.holder || usr.client.holder.state != 2) && !issilicon(usr))
+		if (get_dist(usr.client.eye, src) > 7 && (!usr.client || !usr.client.holder || usr.client.holder.state != 2) && !issilicon(usr))
 			return "[.]<br><span style=\"color:red\"><B>[src.name]</B> is too far away to see clearly.</span>"
 
 
