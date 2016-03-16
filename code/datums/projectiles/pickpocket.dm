@@ -71,7 +71,7 @@
 						heldItem.layer = initial(heldItem.layer)
 						boutput(M, "A [heldItem] suddenly thwacks into your chest! [pick(strikeFlavor)]")
 				if ("head")
-					if (M.wear_mask || !M.equip_if_possible(heldItem, M.slot_wear_mask)) // Masks have more inherent grif potential than eyes/head
+					if (M.wear_mask || !M.equip_if_possible(heldItem, M.slot_wear_mask)) // Masks have more inherent grif potential than glasses/hat
 						heldItem.set_loc(get_turf(M))
 						heldItem.layer = initial(heldItem.layer)
 						boutput(M, "A [heldItem] suddenly thwacks into your head! [pick(strikeFlavor)]")
@@ -79,19 +79,23 @@
 					if (!M.put_in_hand_or_drop(heldItem))
 						boutput(M, "A [heldItem] brushes insistently at your hands! [pick(strikeFlavor)]")
 				if ("r_leg")
-					if (M.r_store || !M.equip_if_possible(heldItem, M.slot_r_store)) // FIX: Currently planting in all, both pockets and on the ground
-					else if (M.l_store || !M.equip_if_possible(heldItem, M.slot_l_store))
-					else
-						heldItem.set_loc(get_turf(M))
-						heldItem.layer = initial(heldItem.layer)
-						boutput(M, "A [heldItem] tries to cram itself into your pockets! [pick(strikeFlavor)]")
+					if (!M.r_store && M.equip_if_possible(heldItem, M.slot_r_store))
+						return
+					if (!M.l_store && M.equip_if_possible(heldItem, M.slot_l_store))
+						return
+					// Couldn't go into a pocket, dump on ground
+					heldItem.set_loc(get_turf(M))
+					heldItem.layer = initial(heldItem.layer)
+					boutput(M, "A [heldItem] tries to cram itself into your pockets! [pick(strikeFlavor)]")
 				if ("l_leg")
-					if (M.l_store || !M.equip_if_possible(heldItem, M.slot_l_store)) // FIX: Currently planting in all, both pockets and on the ground
-					else if (M.r_store || !M.equip_if_possible(heldItem, M.slot_r_store))
-					else
-						heldItem.set_loc(get_turf(M))
-						heldItem.layer = initial(heldItem.layer)
-						boutput(M, "A [heldItem] tries to cram itself into your pockets! [pick(strikeFlavor)]")
+					if (!M.l_store && M.equip_if_possible(heldItem, M.slot_l_store))
+						return
+					if (!M.r_store && M.equip_if_possible(heldItem, M.slot_r_store))
+						return
+					// Couldn't go into a pocket, dump on ground
+					heldItem.set_loc(get_turf(M))
+					heldItem.layer = initial(heldItem.layer)
+					boutput(M, "A [heldItem] tries to cram itself into your pockets! [pick(strikeFlavor)]")
 		else
 			heldItem.set_loc(get_turf(hit))
 		return
@@ -103,7 +107,10 @@
 			var/mob/living/carbon/human/M = hit
 			switch (targetZone)
 				if ("chest")
-					boutput(world, "Implement wedgies and kick-me signs or something.") // TODO: Figure this out. Wedgies: Force high-pitched screams?
+					boutput(M, "Out of nowhere, you suddenly receive a huge wedgie!") // TODO: Add kick-me signs?
+					M.weakened = max(rand(2,4), M.weakened)
+					M.reagents.add_reagent("helium", 30)
+					M.emote("scream")
 				if ("head")
 					if (M.head && ((M.head.c_flags & COVERSEYES) || !M.glasses)) // Dislodge eye-blocking hats, or other hats if target is not wearing eyewear
 						var/obj/item/clothing/head/hat = M.head
@@ -115,15 +122,29 @@
 						spawn(0) hat.throw_at(get_edge_target_turf(hat, pick(alldirs)), 50, 1) // Using gravitor accelerator figures because why not
 					else if (M.glasses) // Smash eyewear
 						var/obj/item/clothing/glasses/broke = M.glasses
-						boutput(M, "Your [broke] is ripped from your face and crushed into powder! What the hell!")
+						boutput(M, "Your [broke] is ripped from your face and crushed into pieces! What the hell!")
 						M.u_equip(broke)
 						qdel(broke)
 					else // Eye gouge
 						boutput(M, "<span style=\"color:red\">Something suddenly gouges you in the eyes! JESUS FUCK OW</span>")
 						M.take_eye_damage(10)
-				if ("r_arm", "l_arm")
-					boutput(world, "I have no fucking idea what to do here.") // TODO: Figure this out
-				if ("r_leg", "l_leg")
+				if ("r_arm") // Stop hitting yourself, stop hitting yourself
+					if (M.r_hand && istype(M.r_hand, /obj/item/))
+						var/obj/item/stopHittingYourself = M.r_hand
+						boutput(M, "You suddenly take a swing at yourself with [stopHittingYourself]!") 
+						stopHittingYourself.attack(hit, M)
+					else
+						boutput(M, "You suddenly take a swing at yourself!") 
+						M.melee_attack(M)
+				if ("l_arm")
+					if (M.l_hand && istype(M.l_hand, /obj/item/))
+						var/obj/item/stopHittingYourself = M.l_hand
+						boutput(M, "You suddenly take a swing at yourself with [stopHittingYourself]!") 
+						stopHittingYourself.attack(hit, M)
+					else
+						boutput(M, "You suddenly take a swing at yourself!") 
+						M.melee_attack(M)
+				if ("r_leg", "l_leg") // Tie shoelaces
 					if (M.shoes && M.shoes.laces == 0)
 						M.shoes.laces = 1
 						if (istype(M.shoes, /obj/item/clothing/shoes/clown_shoes))
