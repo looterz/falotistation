@@ -11,7 +11,7 @@ var/list/occupations = list(
 	"Scientist","Scientist", "Scientist",
 	"Medical Doctor", "Medical Doctor",
 	"Head of Personnel",
-//	"Head of Security",
+	"Head of Security",
 	"Research Director",
 	"Medical Director",
 	"Chaplain",
@@ -59,7 +59,7 @@ var/list/page_departments = list(
 
 /proc/get_all_jobs()
 	return list("Assistant", "Detective", "Medical Doctor", "Captain", "Security Officer",
-				"Geneticist", "Scientist", "Head of Personnel",
+				"Geneticist", "Scientist", "Head of Personnel", "Head of Security",
 				"Chaplain", "Barman", "Janitor", "Chef", "Roboticist", "Quartermaster",
 				"Chief Engineer","Engineer", "Miner", "Mechanic",
 				"Research Director", "Medical Director", "Botanist", "Clown")
