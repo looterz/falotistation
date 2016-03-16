@@ -334,7 +334,7 @@
 	slot_suit = /obj/item/clothing/suit/det_suit
 	slot_poc1 = /obj/item/zippo
 	slot_ears = /obj/item/device/radio/headset/security
-	items_in_backpack = list(/obj/item/tank/emergency_oxygen,/obj/item/clothing/glasses/vr)
+	items_in_backpack = list(/obj/item/tank/emergency_oxygen,/obj/item/clothing/glasses/vr,/obj/item/storage/box/security_starter_kit)
 
 	New()
 		..()
