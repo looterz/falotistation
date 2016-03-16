@@ -199,7 +199,7 @@ var/global/client/ff_debugger = null
 	icon = 'ocean.dmi'
 	name = "seafloor"
 	water = 138771
-	temperature = T0C + 2 // average ocean temp on Earth is roughly 1-4 °C
+	temperature = T0C + 2 // average ocean temp on Earth is roughly 1-4 Â°C
 
 	New()
 		..()
@@ -809,6 +809,20 @@ var/global/client/ff_debugger = null
 				boutput(tmob, "<span style=\"color:red\">You stumble and hit your head.</span>")
 				tmob.weakened = max(rand(3,10), tmob.weakened)
 				tmob.stuttering = max(rand(0,3), tmob.stuttering)
+	
+	if (prob(2) && ishuman(M)) // Handling tied or cut shoelaces courtesy of /obj/item/gun/energy/pickpocket
+		var/mob/living/carbon/human/tmob = M
+		if (tmob.shoes && tmob.m_intent == "run" && tmob.shoes.laces == 1) // Laces tied
+			boutput(tmob, "You stumble and fall headlong to the ground. Your shoelaces are a huge knot! <span style=\"color:red\">FUCK!</span>")
+			tmob.weakened = max(rand(1,4), tmob.weakened)
+		else if (tmob.shoes && tmob.m_intent == "run" && tmob.shoes.laces == 2) // Laces cut
+			var/obj/item/clothing/shoes/S = tmob.shoes
+			tmob.u_equip(S)
+			S.set_loc(tmob.loc)
+			S.dropped(tmob)
+			S.layer = initial(S.layer)
+			if (prob(20)) boutput(tmob, "You run right the fuck out of your shoes. <span style=\"color:red\">Shit!</span>")
+
 	var/i = 0
 	for(var/atom/A as mob|obj|turf|area in src)
 		// I Said No sanity check
