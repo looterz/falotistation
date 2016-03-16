@@ -40,7 +40,7 @@
 			qdel(src)
 		
 		if (src.laces == 1 && (istype(W, /obj/item/wirecutters) || istype(W, /obj/item/scissors)))
-			boutput(user, "You neatly cut the knot, and most of the laces away. Problem solved forever!")
+			boutput(user, "You neatly cut the knot and most of the laces away. Problem solved forever!")
 			src.laces = 2
 
 /obj/item/clothing/shoes/rocket
