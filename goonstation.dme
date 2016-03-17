@@ -467,6 +467,7 @@ var/datum/preMapLoad/preMapLoad = new
 #include "code\datums\projectiles\laser.dm"
 #include "code\datums\projectiles\owl.dm"
 #include "code\datums\projectiles\phaser.dm"
+#include "code\datums\projectiles\pickpocket.dm"
 #include "code\datums\projectiles\projectile_parent.dm"
 #include "code\datums\projectiles\radbolt.dm"
 #include "code\datums\projectiles\shrink_beam.dm"
