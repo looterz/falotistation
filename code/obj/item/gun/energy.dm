@@ -753,7 +753,7 @@
 	attack_hand(mob/user as mob)
 		if (src.loc == user && (src == user.l_hand || src == user.r_hand))
 			if (heldItem)
-				boutput(user, "You remove the [heldItem.name] from the gun.")
+				boutput(user, "You remove \the [heldItem.name] from the gun.")
 				user.put_in_hand_or_drop(heldItem)
 				heldItem = null
 			else
@@ -769,7 +769,7 @@
 			heldItem = I
 			user.u_equip(I)
 			I.dropped(user)
-			boutput(user, "You insert the [heldItem.name] into the gun's gripper.")
+			boutput(user, "You insert \the [heldItem.name] into the gun's gripper.")
 		return ..()
 
 	attack(mob/M as mob, mob/user as mob)
@@ -779,12 +779,10 @@
 		if (istype(current_projectile, /datum/projectile/pickpocket/plant) && !heldItem)
 			boutput(user, "Cannot plant item if gun is not holding anything!")
 			return
-		
+
 		var/datum/projectile/pickpocket/shot = current_projectile
 		shot.linkedGun = src
 		shot.targetZone = user.zone_sel.selecting
-		shot.heldItem = heldItem
-		if (istype(current_projectile, /datum/projectile/pickpocket/plant)) heldItem = null
 		return ..(M, user)
 
 	shoot(var/target, var/start, var/mob/user)
@@ -794,10 +792,8 @@
 		if (istype(current_projectile, /datum/projectile/pickpocket/plant) && !heldItem)
 			boutput(user, "Cannot plant item if gun is not holding anything!")
 			return
-		
+
 		var/datum/projectile/pickpocket/shot = current_projectile
 		shot.linkedGun = src
 		shot.targetZone = user.zone_sel.selecting
-		shot.heldItem = heldItem
-		if (istype(current_projectile, /datum/projectile/pickpocket/plant)) heldItem = null
 		return ..(target, start, user)
