@@ -78,23 +78,23 @@
 						if (!M.put_in_hand_or_drop(linkedGun.heldItem))
 							boutput(M, "\A [linkedGun.heldItem] brushes insistently at your hands! [pick(strikeFlavor)]")
 					if ("r_leg")
-						if (!M.r_store && M.equip_if_possible(linkedGun.heldItem, M.slot_r_store))
-							return
-						if (!M.l_store && M.equip_if_possible(linkedGun.heldItem, M.slot_l_store))
-							return
-						// Couldn't go into a pocket, dump on ground
-						linkedGun.heldItem.set_loc(get_turf(M))
-						linkedGun.heldItem.layer = initial(linkedGun.heldItem.layer)
-						boutput(M, "\A [linkedGun.heldItem] tries to cram itself into your pockets! [pick(strikeFlavor)]")
+						if (!M.r_store && M.can_equip(linkedGun.heldItem, M.slot_r_store))
+							M.equip_if_possible(linkedGun.heldItem, M.slot_r_store)
+						else if (!M.l_store && M.can_equip(linkedGun.heldItem, M.slot_l_store))
+							M.equip_if_possible(linkedGun.heldItem, M.slot_l_store)
+						else // Couldn't go into a pocket, dump on ground
+							linkedGun.heldItem.set_loc(get_turf(M))
+							linkedGun.heldItem.layer = initial(linkedGun.heldItem.layer)
+							boutput(M, "\A [linkedGun.heldItem] tries to cram itself into your pockets! [pick(strikeFlavor)]")
 					if ("l_leg")
-						if (!M.l_store && M.equip_if_possible(linkedGun.heldItem, M.slot_l_store))
-							return
-						if (!M.r_store && M.equip_if_possible(linkedGun.heldItem, M.slot_r_store))
-							return
-						// Couldn't go into a pocket, dump on ground
-						linkedGun.heldItem.set_loc(get_turf(M))
-						linkedGun.heldItem.layer = initial(linkedGun.heldItem.layer)
-						boutput(M, "\A [linkedGun.heldItem] tries to cram itself into your pockets! [pick(strikeFlavor)]")
+						if (!M.l_store && M.can_equip(linkedGun.heldItem, M.slot_l_store))
+							M.equip_if_possible(linkedGun.heldItem, M.slot_l_store)
+						else if (!M.r_store && M.can_equip(linkedGun.heldItem, M.slot_r_store))
+							M.equip_if_possible(linkedGun.heldItem, M.slot_r_store)
+						else // Couldn't go into a pocket, dump on ground
+							linkedGun.heldItem.set_loc(get_turf(M))
+							linkedGun.heldItem.layer = initial(linkedGun.heldItem.layer)
+							boutput(M, "\A [linkedGun.heldItem] tries to cram itself into your pockets! [pick(strikeFlavor)]")
 			else
 				logTheThing("combat", linkedGun, null, " plants [linkedGun.heldItem] at [showCoords(hit.x, hit.y, hit.z)]")
 				linkedGun.heldItem.set_loc(get_turf(hit))
