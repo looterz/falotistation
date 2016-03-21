@@ -13,8 +13,10 @@
 	New()
 		..()
 		spawn(5)
-			if (kit_styles && kit_styles.len)
+			if (kit_styles && kit_styles.len) //CHANGES INHAND AND ICON SPRITES TO A RANDOM STYLE
 				icon_state = pick(kit_styles)
+			if (kit_styles && kit_styles.len)
+				item_state = pick(kit_styles)
 
 /obj/item/storage/firstaid/regular
 	icon_state = "firstaid1"
@@ -100,9 +102,10 @@
 
 /obj/item/storage/firstaid/docbag
 	name = "doctor's bag"
-	icon_state = "docbag"
-	item_state = "docbag"
+	icon_state = "docbag1"
+	item_state = "docbag1" //DOCBAG CURRENTLY
 	desc = "A old-fashioned doctor's bag designed to cary medical and surgical supplies."
+	kit_styles = list("docbag1", "docbag2", "docbag3")
 	spawn_contents = list(/obj/item/circular_saw, /obj/item/scalpel, /obj/item/suture, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/iv_drip/blood)
 
 /* -------------------- First Aid Kits - VR -------------------- */
