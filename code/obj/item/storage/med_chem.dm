@@ -98,6 +98,13 @@
 	/obj/item/reagent_containers/emergency_injector/synaptizine,\
 	/obj/item/device/healthanalyzer)
 
+/obj/item/storage/firstaid/docbag
+	name = "doctor's bag"
+	icon_state = "docbag"
+	item_state = "docbag"
+	desc = "A old-fashioned doctor's bag designed to cary medical and surgical supplies."
+	spawn_contents = list(/obj/item/circular_saw, /obj/item/scalpel, /obj/item/suture, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/iv_drip/blood)
+
 /* -------------------- First Aid Kits - VR -------------------- */
 
 /obj/item/storage/firstaid/vr
