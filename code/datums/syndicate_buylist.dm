@@ -406,6 +406,14 @@ proc/build_syndi_buylist_cache()
 	not_in_crates = 1
 	job = list("Engineer", "Chief Engineer", "Mechanic")
 	blockedmode = list(/datum/game_mode/spy, /datum/game_mode/revolution)
+	
+/datum/syndicate_buylist/traitor/pickpocket
+	name = "Pickpocket Gun"
+	item = /obj/item/gun/energy/pickpocket
+	cost = 3
+	desc = "A stealthy claw gun capable of stealing and planting items, and severely messing people."
+	job = list("Engineer", "Chief Engineer", "Mechanic")
+	blockedmode = list(/datum/game_mode/spy, /datum/game_mode/revolution)
 
 /datum/syndicate_buylist/traitor/poisonbottle
 	name = "Poison Bottle"

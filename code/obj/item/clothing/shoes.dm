@@ -6,6 +6,7 @@
 	inhand_image_icon = 'icons/mob/inhand/hand_feethand.dmi'
 	wear_image_icon = 'icons/mob/feet.dmi'
 	var/chained = 0
+	var/laces = 0 // Laces for /obj/item/gun/energy/pickpocket harass mode. 0 = normal, 1 = tied, 2 = cut, -1 = no laces
 	compatible_species = list("human", "monkey")
 
 	protective_temperature = 500
@@ -37,6 +38,10 @@
 			boutput(user, "<span style=\"color:blue\">You haphazardly kludge together some rocket shoes.</span>")
 			qdel(W)
 			qdel(src)
+		
+		if (src.laces == 1 && (istype(W, /obj/item/wirecutters) || istype(W, /obj/item/scissors)))
+			boutput(user, "You neatly cut the knot and most of the laces away. Problem solved forever!")
+			src.laces = 2
 
 /obj/item/clothing/shoes/rocket
 	name = "rocket shoes"
@@ -155,6 +160,7 @@
 	mats = 8
 	burn_possible = 0
 	module_research = list("efficiency" = 5, "engineering" = 5)
+	laces = -1
 
 /obj/item/clothing/shoes/industrial
 	name = "mechanised boots"
@@ -165,6 +171,7 @@
 	movement_speed_mod = -3
 	burn_possible = 0
 	module_research = list("efficiency" = 5, "engineering" = 5, "mining" = 10)
+	laces = -1
 
 /obj/item/clothing/shoes/white
 	name = "white shoes"
@@ -192,6 +199,7 @@
 	desc = "A pair of rubber flippers that improves swimming ability when worn."
 	icon_state = "flippers"
 	permeability_coefficient = 0.05
+	laces = -1
 
 /obj/item/clothing/shoes/fuzzy //not boolean slippers
 	name = "fuzzy slippers"
@@ -239,6 +247,7 @@
 	icon_state = "wizard"
 	c_flags = NOSLIP
 	magical = 1
+	laces = -1
 
 	handle_other_remove(var/mob/source, var/mob/living/carbon/human/target)
 		. = ..()
