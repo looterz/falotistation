@@ -11,7 +11,7 @@ var/list/observers = list()
 	New(target)
 		..()
 		src.target = target
-		loc = null
+		loc = target
 
 		observers += src
 
