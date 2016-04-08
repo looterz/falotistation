@@ -8,6 +8,7 @@
 	icon_state = "reinforce"
 	name = "grab"
 	w_class = 5
+	anchored = 1
 
 	New()
 		..()
@@ -139,9 +140,18 @@
 		update_icon()
 
 	proc/check()
-		if (!src.affecting || get_dist(src.assailant, src.affecting) > 1 || src.loc != src.assailant)
+		if(!assailant || !affecting)
 			qdel(src)
 			return 1
+
+		if(!assailant.is_in_hands(src))
+			qdel(src)
+			return 1
+
+		if(!isturf(assailant.loc) || (!isturf(affecting.loc) || assailant.loc != affecting.loc && get_dist(assailant, affecting) > 1) )
+			qdel(src)
+			return 1
+
 		return 0
 
 	proc/update_icon()

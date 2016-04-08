@@ -1693,7 +1693,7 @@
 								if (M == src)
 									continue
 								if (istype(usr.equipped(), /obj/item/grab))
-									if (G.state >= 1)
+									if (G.state >= 1 && isturf(src.loc) && isturf(G.affecting.loc))
 										var/turf/newloc = src.loc
 										G.affecting.set_loc(newloc)
 										if (!G.affecting.reagents.has_reagent("fliptonium"))
