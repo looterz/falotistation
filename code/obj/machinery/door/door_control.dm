@@ -424,7 +424,7 @@
 
 		wizard
 			id = "hangar_wizard"
-			access_type = -1
+			access_type = -2
 
 			new_walls
 				north

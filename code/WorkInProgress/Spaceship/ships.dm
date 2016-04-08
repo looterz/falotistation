@@ -150,7 +150,7 @@
 		//Phaser
 		src.m_w_system = new /obj/item/shipcomponent/mainweapon
 		src.m_w_system.ship = src
-		src.com_system = new /obj/item/shipcomponent/communications/syndicate(src)
+		src.com_system = new /obj/item/shipcomponent/communications/wizard(src)
 		src.com_system.ship = src
 		src.lock = new /obj/item/shipcomponent/secondary_system/lock(src)
 		src.lock.ship = src

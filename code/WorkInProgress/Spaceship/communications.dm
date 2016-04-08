@@ -40,6 +40,12 @@
 		color = "#BA1313"
 		access_type = -1
 
+	wizard
+		name = "MagicaTech Communication Array"
+		desc = "A expensive magical-looking shipboard communicator. Often used by those who shoot fireballs!"
+		color = "#FFFFFF"
+		access_type = -2
+
 	opencomputer(mob/user as mob)
 		if(ship.intercom)
 			ship.intercom.attack_self(user)
