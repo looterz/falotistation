@@ -11,10 +11,16 @@
 		var/datum/reagents/R = new/datum/reagents(10)
 		reagents = R
 		R.my_atom = src
-		R.add_reagent("cleaner",5)
-		R.add_reagent("water",5)
+		R.add_reagent("cleaner", 5)
+		R.add_reagent("water", 5)
+
 	HasEntered(atom/A)
+		if(isliving(A))
+			var/mob/living/L = A
+			L.update_burning(-30)
+
 		reagents.reaction(A, TOUCH, 2)
+
 		return
 
 /obj/tree1
